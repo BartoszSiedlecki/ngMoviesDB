@@ -1,0 +1,25 @@
+<div class="details" [style.backgroundImage]='"url(" + url + ")"'>
+    <div class="blur"></div>
+    <div class="movie">
+        <div class="movie-poster">
+            <img 
+                src="{{ movie.image }}"
+                alt="poster-img"
+            />
+        </div>
+        <div class="movie-info">
+            <h2 class="movie-title"> {{ movie.titleOriginal }}<span class="movie-year">({{ movie.year }})</span></h2>
+            <div class="movie-facts">
+                <span class="movie-release">{{ movie.release }}</span>*
+                <ng-container *ngFor="let genres of movie.genres; let last = last">
+                    {{ genres.name }}<span class="movie-genres" *ngIf="!last">,</span>
+                </ng-container>
+            </div>
+            <h3 class="movie-description">Description</h3>
+            <p class="movie-description-content">
+                {{ movie.description }}
+            </p>
+            <div class="movie-rating"><span class="movie-rating-content">9/10</span></div>
+        </div>
+    </div>
+</div>

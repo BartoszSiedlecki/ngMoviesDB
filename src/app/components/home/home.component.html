@@ -1,0 +1,49 @@
+<div class="filters">
+    <mat-form-field>    <!-- angular material -->
+        <mat-label>Sort</mat-label>
+        <mat-select
+            panelClass="sort-select"
+            [(ngModel)]="sort"
+            (selectionChange)="searchMovies(sort)"
+        >
+            <mat-option value="title">Title</mat-option>
+            <mat-option value="year">Year</mat-option>
+            <mat-option value="createdAt">CreatedAt</mat-option>
+            <mat-option value="updatedAt">UpdatedAt</mat-option>
+            <mat-option value="rating">Rating</mat-option>
+        </mat-select>
+    </mat-form-field>
+</div>
+
+<div class="movies">
+    <ng-container *ngFor="let movie of movies">
+        <div class="movie" (click)="openMovieDetails(movie._id)">
+            <div class="movie-thumb-container">
+                <img
+                    *ngIf="movie.image"
+                    src="{{movie.image}}"
+                    alt="thumbnail"
+                    class="movie-thumbnail"
+                />
+                <p *ngIf="!movie.image">No image</p>
+            </div>
+            <div class="movie-description">
+                <div class="movie-upper-desc">
+                    <p class="movie-name">{{ movie.titleOriginal }}</p>
+                    <span class="movie-rating">{{ movie.rating }}</span>
+                </div>
+                <div class="movie-genres">
+                    <ng-container *ngFor="let genres of movie.genres; let last = last">
+                        {{ genres.name }}<span *ngIf="!last">, </span>
+                    </ng-container>
+                </div>
+                <div class="movie-pop-up">
+                    <h3 class="movie-pop-up-overview">Overview</h3>
+                    <p class="movie-pop-up-overview-content">
+                        {{ movie.description }}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </ng-container>
+</div>

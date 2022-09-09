@@ -1,0 +1,12 @@
+<div class="search-container">
+    <form class="search-form" #form="ngForm" (ngSubmit)="onSubmit(form)">
+        <span class="logo" routerLink="/">MoviesDB</span>   <!-- navigation to route -->
+        <input 
+            class="search-input"
+            name="search"
+            ngModel
+            placeholder="Find your favourite movie!"
+        />
+        <button class="search-button" type="submit">Search</button>
+    </form>
+</div>
